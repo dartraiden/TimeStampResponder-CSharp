@@ -15,9 +15,6 @@ namespace Demo
         static readonly string TSAPath = @"/TSA/";
         static void Main(string[] args)
         {
-            PrintDesc();
-            Console.ReadKey();
-            Console.Clear();
             try
             {
                 tsResponder = new TSResponder(File.ReadAllBytes("TSA.crt"), File.ReadAllBytes("TSA.key"), "SHA1");
@@ -56,19 +53,6 @@ namespace Demo
             }
         }
 
-        static void PrintDesc()
-        {
-            Console.Title = "JemmyLoveJenny Local TimeStamp Responder";
-            Console.WriteLine(
-                "[JemmyLoveJenny Local TimeStamp Responder]\r\n" +
-                "\r\n" +
-                "Please put your TSA cert chain and key in the same folder of this program and name them as \"TSA.crt\" and \"TSA.key\".\r\n" +
-                "This program must run in administrator mode in order to start the local http server!\r\n" +
-                "TSResponder accept UTC Time in the form of \"yyyy-MM-dd'T'HH:mm:ss\"  For example: \"2019-04-01T15:23:46\"\r\n" +
-                "\r\n" +
-                "Press any key to start server!"
-                );
-        }
         static void TaskProc(object o)
         {
             HttpListenerContext ctx = (HttpListenerContext)o;
